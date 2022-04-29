@@ -1,0 +1,30 @@
+.App {
+  display: flex;
+  height: 70px;
+
+  width: 100%;
+  justify-content: center;
+  flex-direction: row;
+
+  position: static;
+
+  text-decoration: none;
+
+  align-items: center;
+}
+
+.todo__list:link,
+:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 20px;
+}
+
+.todo__list:hover {
+  color: white;
+  background-color: green;
+}
