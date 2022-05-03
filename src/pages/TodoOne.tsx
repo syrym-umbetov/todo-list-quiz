@@ -17,15 +17,15 @@ const TodoOne: FC = () => {
   };
 
   const addTask = (): void => {
-    const newTask = { taskName: task, deadline: deadline };
+    const newTask = { taskName: task, taskId: Math.floor(Math.random() * Date.now()), deadline: deadline };
     setTodoList([...todoList, newTask]);
     setTask('');
     setDeadline(0);
   };
-  const completeTask = (taskNameToDelete: string): void => {
+  const completeTask = (taskIdToDelete: number): void => {
     setTodoList(
       todoList.filter((task) => {
-        return task.taskName !== taskNameToDelete;
+        return task.taskId !== taskIdToDelete;
       })
     );
   };
