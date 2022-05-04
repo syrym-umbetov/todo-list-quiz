@@ -1,0 +1,8 @@
+.title{
+  display: inline-block;
+}
+
+.text {
+  text-decoration: line-through;
+  color: black
+}
