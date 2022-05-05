@@ -7,7 +7,6 @@ const TodoOne: FC = () => {
   const [task, setTask] = useState<string>('');
   const [deadline, setDeadline] = useState<number>(0);
   const [todoList, setTodoList] = useState<ITask[]>([]);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     if (e.target.name === 'task') {
       setTask(e.target.value);
@@ -17,16 +16,23 @@ const TodoOne: FC = () => {
   };
 
   const addTask = (): void => {
-    const newTask = { taskName: task, deadline: deadline };
+    const newTask = { taskName: task, taskId: Math.floor(Math.random() * Date.now()), complete: false, deadline: deadline };
     setTodoList([...todoList, newTask]);
     setTask('');
     setDeadline(0);
   };
-  const completeTask = (taskNameToDelete: string): void => {
+  const completeTask = (taskIdToDelete: number): void => {
     setTodoList(
       todoList.filter((task) => {
-        return task.taskName !== taskNameToDelete;
+        return task.taskId !== taskIdToDelete;
       })
+    );
+  };
+  const isTaskDone = (taskId: number): void => {
+    setTodoList(
+      todoList.map((task) =>
+        task.taskId === taskId ? { ...task, complete: !task.complete } : { ...task }
+      )
     );
   };
   return (
@@ -52,7 +58,7 @@ const TodoOne: FC = () => {
       </div>
       <div className='todoList'>
         {todoList.map((task: ITask, key: number) => {
-          return <TodoTask key={key} task={task} completeTask={completeTask} />;
+          return <TodoTask key={key} task={task} completeTask={completeTask} isTaskDone={isTaskDone} />;
         })}
       </div>
     </div>
