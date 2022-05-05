@@ -1,0 +1,13 @@
+.overdue {
+  padding: 5px;
+  margin: 5px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(3, 20%);
+}
